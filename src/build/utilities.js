@@ -28,6 +28,7 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
 
   const inputFilePathJS = `${sourcePath}/${componentName}.js`
   const configFilePath = `${sourcePath}/${componentName}.json`
+  const inputFilePathCSS = `${sourcePath}/${componentName}.css`
 
   const outputDirectoryPath = cwdResolve(`./components/${componentName}`)
   const outputFilePathJS = `${outputDirectoryPath}/${componentName}.js`
@@ -38,6 +39,7 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
     componentName,
     sourcePath,
     inputFilePathJS,
+    inputFilePathCSS,
     configFilePath,
     outputDirectoryPath,
     outputFilePathJS,
