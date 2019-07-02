@@ -8,9 +8,9 @@
     "manbun": "./bin/index.js"
   },
   "files": [
-    "./bin",
-    "./babel.config.js",
-    "./prettier.config.js"
+    "bin",
+    "babel.config.js",
+    "prettier.config.js"
   ],
   "scripts": {
     "build": "babel src --out-dir bin",
