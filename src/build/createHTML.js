@@ -33,7 +33,7 @@ const getScriptHTML = (configuration) => {
   const { componentName } = configuration
 
   return `
-    const {${componentName} = require('${componentName}/${componentName}');
+    const {${componentName}} = require('${componentName}/${componentName}');
     exports.component = ComponentUI.createReactComponent(${componentName});
   `
 }
