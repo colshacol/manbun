@@ -8,10 +8,10 @@
 yarn.lock
 
 # compiled output directories
-./dist
-./lib
-./build
-./bin
+/dist
+/lib
+/build
+/bin
 
 # development/dependency directories
 node_modules
