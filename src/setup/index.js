@@ -23,9 +23,9 @@ const createGitKeeps = () => {
 export const setup = (context) => {
   console.log('[ manbun ] SETUP')
 
-  !context.flags.dev && createDirectories()
-  !context.flags.dev && createGitKeeps()
-  !context.flags.dev && createReadme()
+  createDirectories()
+  createGitKeeps()
+  createReadme()
 
   console.log('[ manbun ] SETUP SUCCESSFUL')
 }

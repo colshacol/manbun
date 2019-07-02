@@ -1,0 +1,78 @@
+
+<!DOCTYPE f8component>
+<definition>
+{
+  "id": "Controls",
+  "label": "Controls",
+  "className": "JukeboxControls",
+  "renderable": true
+}
+</definition>
+<attributes>
+[
+  {
+    "name": "bucket",
+    "label": "Bucket",
+    "type": "choice",
+    "attributes": {
+      "choice_type": "dropdown",
+      "buckets": "true",
+      "none_option": "true"
+    }
+  },
+  {
+    "name": "suffix",
+    "label": "Suffix",
+    "type": "choice",
+    "attributes": {
+      "choice_type": "dropdown",
+      "default": "png",
+      "choices": [
+        {
+          "label": "All images",
+          "value": "all"
+        },
+        {
+          "label": "PNG",
+          "value": "png"
+        },
+        {
+          "label": "JPG",
+          "value": "jpg"
+        },
+        {
+          "label": "GIF",
+          "value": "gif"
+        }
+      ]
+    }
+  }
+]
+</attributes>
+<attributes_layout>
+[
+  "bucket",
+  "suffix"
+]
+</attributes_layout>
+<attributes_display_rules>
+[
+  {
+    "slot": "bucket",
+    "conditions": {
+      "mandatory": []
+    }
+  },
+  {
+    "slot": "suffix",
+    "conditions": {
+      "hidden": [
+        "bucket",
+        "eq",
+        ""
+      ]
+    }
+  }
+]
+</attributes_display_rules>
+  
