@@ -19,11 +19,10 @@
     "exec-help": "babel-node ./src --help",
     "prepublishOnly": "yarn build"
   },
-  "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/runtime": "^7.4.5"
-  },
+  "devDependencies": {},
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/runtime": "^7.4.5",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
