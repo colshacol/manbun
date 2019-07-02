@@ -1,6 +1,18 @@
-node_modules
-yarn.lock
-*.log
+# files you dont need to commit
 .DS_Store
-dist
-bin
+*.log
+.env
+
+# maybe you should commit these, maybe not
+# idk, google it
+yarn.lock
+
+# compiled output directories
+./dist
+./lib
+./build
+./bin
+
+# development/dependency directories
+node_modules
+.cache

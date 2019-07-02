@@ -3,11 +3,11 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import fileSize from 'rollup-plugin-filesize'
 
-import { NAMED_EXPORTS } from './consts'
+import { NAMED_EXPORTS } from '../consts'
 
-const plugins = [
-  babel(),
+export const plugins = [
   fileSize(),
+  babel(),
 
   resolve({
     preferBuiltins: true,

@@ -1,8 +1,8 @@
 module.exports = {
   "presets": [
-    "@babel/preset-react",
     "@babel/preset-flow",
-    '@babel/preset-env'
+    '@babel/preset-env',
+    "@babel/preset-react",
   ],
 
   "plugins": [
