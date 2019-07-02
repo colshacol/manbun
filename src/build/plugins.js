@@ -7,7 +7,7 @@ import { NAMED_EXPORTS } from '../consts'
 
 export const plugins = [
   fileSize(),
-  babel(),
+  babel({ runtimeHelpers: true }),
 
   resolve({
     preferBuiltins: true,
