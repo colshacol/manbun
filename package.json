@@ -13,7 +13,7 @@
     "prettier.config.js"
   ],
   "scripts": {
-    "build": "babel src --out-dir bin",
+    "build": "node build",
     "exec-setup": "babel-node ./src setup --dev",
     "exec-build": "babel-node src build",
     "exec-help": "babel-node ./src --help",
