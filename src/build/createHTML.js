@@ -47,8 +47,8 @@ export const createHTML = (configuration) => {
     <attributes>\n${attributesString}\n</attributes>
     <attributes_layout>\n${attributesLayoutString}\n</attributes_layout>
     <attributes_display_rules>\n${attributesDisplayString}\n</attributes_display_rules>
-    <style>${cssString}</style>
-    <script>${scriptString}</script>
+    <style>\n${cssString}\n</style>
+    <script>\n${scriptString}\n</script>
   `)
 
   fs.writeFileSync(configuration.outputFilePathHTML, html, 'utf8')
