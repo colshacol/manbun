@@ -18,7 +18,37 @@ const cleanHTML = (html) => {
 }
 
 const validateConfig = (componentConfig) => {
-  // TODO
+  if (!componentConfig.type) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json type property is required.`)
+  }
+
+  if (!componentConfig.id) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json id property is required.`)
+  }
+
+  if (!componentConfig.label) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json label property is required.`)
+  }
+
+  if (!componentConfig.className) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json className property is required.`)
+  }
+
+  if (!componentConfig.renderable) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json renderable property is required.`)
+  }
+
+  if (!Array.isArray(componentConfig.attributes)) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json attributes value must be an array.`)
+  }
+
+  if (!Array.isArray(componentConfig.attributes_layout)) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json type attributes_layout value must be an array.`)
+  }
+
+  if (!Array.isArray(componentConfig.attributes_display_rules)) {
+    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json attributes_display_rules value must be an array.`)
+  }
 }
 
 const getSourceCSS = (configuration) => {
