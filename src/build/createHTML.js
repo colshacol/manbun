@@ -35,9 +35,9 @@ export const createHTML = (configuration) => {
 
   const type = COMPONENT_TYPE_MAP[componentConfig.type]
   const definitionString = stringifyJSON(getDefinition(componentConfig))
-  const attributesString = stringifyJSON(componentConfig.attributes || {})
-  const attributesLayoutString = stringifyJSON(componentConfig.attributes_layout || {})
-  const attributesDisplayString = stringifyJSON(componentConfig.attributes_display_rules || {})
+  const attributesString = stringifyJSON(componentConfig.attributes || [])
+  const attributesLayoutString = stringifyJSON(componentConfig.attributes_layout || [])
+  const attributesDisplayString = stringifyJSON(componentConfig.attributes_display_rules || [])
   const cssString = getSourceCSS(configuration)
   const scriptString = ''
 
