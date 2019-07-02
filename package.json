@@ -1,6 +1,6 @@
 {
   "name": "manbun",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "./bin/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
@@ -21,8 +21,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/runtime": "^7.4.5",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
@@ -30,9 +28,11 @@
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.4.5",
     "meow": "^5.0.0",
     "rollup": "^1.16.3",
     "rollup-plugin-babel": "^4.3.3",
