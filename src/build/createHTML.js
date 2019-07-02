@@ -29,6 +29,15 @@ const getSourceCSS = (configuration) => {
     : ''
 }
 
+const getScriptHTML = (configuration) => {
+  const { componentName } = configuration
+
+  return `
+    const {${componentName} = require('${componentName}/${componentName}');
+    exports.component = ComponentUI.createReactComponent(${componentName});
+  `
+}
+
 export const createHTML = (configuration) => {
   const componentConfig = require(configuration.configFilePath)
   validateConfig(componentConfig)
@@ -39,7 +48,7 @@ export const createHTML = (configuration) => {
   const attributesLayoutString = stringifyJSON(componentConfig.attributes_layout || [])
   const attributesDisplayString = stringifyJSON(componentConfig.attributes_display_rules || [])
   const cssString = getSourceCSS(configuration)
-  const scriptString = ''
+  const scriptString = getScriptHTML(configuration)
 
   const html = cleanHTML(`
     <!DOCTYPE ${type}>

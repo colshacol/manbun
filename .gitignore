@@ -16,3 +16,4 @@ yarn.lock
 # development/dependency directories
 node_modules
 .cache
+/components
