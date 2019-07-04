@@ -1,7 +1,7 @@
 import fs from 'fs'
 import cleanCSS from 'cssbeautify'
 
-import { stringifyJSON } from '../utilities'
+import { stringifyJSON } from '../utilities/general'
 import { prepareScriptForHTML } from './utilities'
 import { COMPONENT_TYPE_MAP } from '../consts'
 

@@ -1,7 +1,8 @@
 import shell from 'shelljs'
 import path from 'path'
 
-import { cwdResolve } from '../utilities'
+import { cwdResolve } from '../utilities/general'
+import { getConfigFile } from '../utilities/configFile'
 import { SOURCE_COMPONENTS_PATH, CWD, HTML_SCRIPT_CONTENT, SERVER_FILE_CONTENT } from '../consts'
 
 type ConfigurationType = {
@@ -26,10 +27,8 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
   const dsComponentName = relativeSourcePath.substr(substringStartIndex)
   const sourcePath = cwdResolve(relativeSourcePath)
 
-  const configFilePath = `${sourcePath}/_config.json`
-  const configFile = require(configFilePath)
+  const configFile = getConfigFile(dsComponentName)
   const { componentName } = configFile
-  validateConfig(configFile)
 
   const inputFilePathJS = `${sourcePath}/${componentName}.js`
   const inputFilePathCSS = `${sourcePath}/${componentName}.css`
@@ -49,7 +48,6 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
     sourcePath,
     inputFilePathJS,
     inputFilePathCSS,
-    configFilePath,
     outputDirectoryPath,
     outputFilePathJS,
     outputFilePathHTML,

@@ -34,7 +34,9 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.5",
     "babel-plugin-jsx-control-statements": "^4.0.0",
+    "babel-plugin-transform-dev-warning": "^0.1.1",
     "cssbeautify": "^0.3.1",
+    "invariant": "^2.2.4",
     "meow": "^5.0.0",
     "prettier": "^1.18.2",
     "pretty": "^2.0.0",
@@ -45,7 +47,8 @@
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-image": "^1.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.3",
+    "warning": "^4.0.3"
   },
   "bugs": {
     "url": "https://github.com/colshacol/manbun/issues"

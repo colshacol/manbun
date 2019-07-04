@@ -1,6 +1,6 @@
 import shell from 'shelljs'
 
-import { cwdResolve } from '../utilities'
+import { cwdResolve } from '../utilities/general'
 
 export const createDirectory = (relativePath) => {
   const finalPath = cwdResolve(relativePath)

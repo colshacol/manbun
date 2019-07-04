@@ -48,19 +48,6 @@ export const SERVER_FILE_CONTENT = prettier.format(`
 `, { parser: 'babel' })
 
 export const HTML_SCRIPT_CONTENT = prettier.format(`
-  var React = require('react');
-  var ReactDOM = require('react-dom');
   var Component = require('$$DS_COMPONENT_NAME/$$COMPONENT_NAME');
-
-  exports.component = ComponentUI.create({
-  onLoad: function(data) {
-          var props = {};
-          var ComponentNew = React.createFactory(Component);
-          ReactDOM.render(ComponentNew(props), this.container[0]);
-      },
-
-      onUnload: function() {
-          ReactDOM.unmountComponentAtNode(this.container[0]);
-      },
-  });
+  exports.component = ComponentUI.createReactComponent(Component);
 `, { parser: 'babel' })

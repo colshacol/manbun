@@ -23,10 +23,14 @@ const buildFromSourcePath = async (sourcePath) => {
       format: 'cjs'
     })
 
-    console.log(`[ manbun] BUNDLED ${configuration.componentName}`)
+    console.log(`[ manbun ] BUNDLED ${configuration.componentName}`)
+
     createHTML(configuration)
+    console.log(`[ manbun ] CREATED HTML FOR ${configuration.componentName}`)
+
     createServer(configuration)
-    console.log(`[ manbun] CREATED HTML FOR ${configuration.componentName}`)
+    console.log(`[ manbun ] CREATED SERVER FOR ${configuration.componentName}`)
+
   } catch (error) {
     console.log('[ manbun ] ERROR:\n\n')
     throw new Error(error)
