@@ -38,12 +38,14 @@ export const createHTML = (taskData) => {
   const cssString = getSourceCSS(taskData)
   const scriptString = prepareScriptForHTML(taskData)
 
+
+
   const html = cleanHTML(`
     <!DOCTYPE ${type}>
     <definition>\n${definitionString}\n</definition>
-    <attributes>\n${attributesString}\n</attributes>
-    <attributes_layout>\n${attributesLayoutString}\n</attributes_layout>
-    <attributes_display_rules>\n${attributesDisplayString}\n</attributes_display_rules>
+    ${attributesString.trim().length > 10 ? `<attributes>\n${attributesString}\n</attributes>` : ''}
+    ${attributesLayoutString.trim().length > 10 ? `<attributes_layout>\n${attributesLayoutString}\n</attributes_layout>` : ''}
+    ${attributesDisplayString.trim().length > 10 ? `<attributes_display_rules>\n${attributesString}\n</attributes_display_rules>` : ''}
     <style>\n${cssString}\n</style>
     <script>\n${scriptString}\n</script>
   `)
