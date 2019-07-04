@@ -11,7 +11,7 @@ const createServer = async (configuration) => {
   const bundle = await rollup({
     input: configuration.inputFilePathServer,
     external: EXTERNALS,
-    plugins: plugins(false)
+    plugins: plugins()
   })
 
   await bundle.write({
