@@ -25,7 +25,7 @@ export const NAMED_EXPORTS = {
 }
 
 export const PATHS_TO_VALIDATE = [
-  '/source/components/$$COMPONENT_NAME/_config.json',
+  '/source/components/$$COMPONENT_NAME/.dsconfig.json',
   '/source/components/$$COMPONENT_NAME/$$COMPONENT_NAME.js',
   '/source/components/$$COMPONENT_NAME/$$COMPONENT_NAME.css'
 ]

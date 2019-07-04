@@ -12,7 +12,7 @@ const validateConfigFileExists = (configFilePath) => {
 }
 
 export const getConfigFile = (componentName) => {
-  const relativePath = `source/components/${componentName}/_config.json`
+  const relativePath = `source/components/${componentName}/.dsconfig.json`
   const configFilePath = cwdResolve(relativePath)
 
   validateConfigFileExists(configFilePath)
