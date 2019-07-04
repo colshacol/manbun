@@ -11,11 +11,11 @@ const createServer = async (configuration) => {
   const bundle = await rollup({
     input: configuration.inputFilePathServer,
     external: EXTERNALS,
-    plugins: plugins()
+    plugins: plugins(),
   })
 
   await bundle.write({
-    sourcemap: true,
+    sourcemap: false,
     file: configuration.outputFilePathServer,
     format: 'cjs'
   })
@@ -32,7 +32,7 @@ const buildFromSourcePath = async (sourcePath) => {
     })
 
     await bundle.write({
-      sourcemap: true,
+      sourcemap: false,
       file: configuration.outputFilePathJS,
       format: 'cjs'
     })
