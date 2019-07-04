@@ -1,0 +1,39 @@
+<!DOCTYPE f8component>
+
+<definition>
+{
+	id: "server_stats_react",
+    label: "Server Stats React Example",
+    "className": "ServerStatsReactServer",
+    renderable: true,
+    dependencies: ["react-core"]
+}
+</definition>
+
+
+<style>
+    .stats-container {
+        text-align: center;
+        padding: 50px;
+    }
+</style>
+
+<script>
+    var React = require('react');
+    var ReactDOM = require('react-dom');
+    var RootComponent = require('server_stats_react/RootComponent');
+
+    exports.component = ComponentUI.create({
+		onLoad: function(data) {
+            // Bootstrap react app
+            var props = {};
+            var RootComponentNew = React.createFactory(RootComponent);
+            ReactDOM.render(RootComponentNew(props), this.container[0]);
+        },
+
+        onUnload: function() {
+            ReactDOM.unmountComponentAtNode(this.container[0]);
+        },
+    });
+</script>
+

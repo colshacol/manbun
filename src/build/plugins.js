@@ -9,7 +9,7 @@ import { NAMED_EXPORTS } from '../consts'
 export const plugins = [
   image(),
   fileSize(),
-  babel({ runtimeHelpers: true }),
+  babel(),
 
   resolve({
     preferBuiltins: true,

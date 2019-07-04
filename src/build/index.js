@@ -1,7 +1,9 @@
+import 'regenerator-runtime/runtime'
 import { rollup } from 'rollup'
 
 import { createHTML } from './createHTML'
-import { copyHTMLFile, getSourcePaths, createConfiguration } from './utilities'
+import { createServer } from './createServer'
+import { getSourcePaths, createConfiguration } from './utilities'
 import { plugins } from './plugins'
 import { EXTERNALS } from '../consts'
 
@@ -23,6 +25,7 @@ const buildFromSourcePath = async (sourcePath) => {
 
     console.log(`[ manbun] BUNDLED ${configuration.componentName}`)
     createHTML(configuration)
+    createServer(configuration)
     console.log(`[ manbun] CREATED HTML FOR ${configuration.componentName}`)
   } catch (error) {
     console.log('[ manbun ] ERROR:\n\n')

@@ -2,6 +2,7 @@ import fs from 'fs'
 import cleanCSS from 'cssbeautify'
 
 import { stringifyJSON } from '../utilities'
+import { prepareScriptForHTML } from './utilities'
 import { COMPONENT_TYPE_MAP } from '../consts'
 
 const getDefinition = (componentConfig) => {
@@ -9,7 +10,8 @@ const getDefinition = (componentConfig) => {
     id: componentConfig.id,
     label: componentConfig.label,
     className: componentConfig.className,
-    renderable: componentConfig.renderable
+    renderable: componentConfig.renderable,
+    dependencies: componentConfig.dependencies
   }
 }
 
@@ -17,68 +19,24 @@ const cleanHTML = (html) => {
   return html.replace(/ *</g, '<')
 }
 
-const validateConfig = (componentConfig) => {
-  if (!componentConfig.type) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json type property is required.`)
-  }
-
-  if (!componentConfig.id) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json id property is required.`)
-  }
-
-  if (!componentConfig.label) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json label property is required.`)
-  }
-
-  if (!componentConfig.className) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json className property is required.`)
-  }
-
-  if (!componentConfig.renderable) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json renderable property is required.`)
-  }
-
-  if (!Array.isArray(componentConfig.attributes)) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json attributes value must be an array.`)
-  }
-
-  if (!Array.isArray(componentConfig.attributes_layout)) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json type attributes_layout value must be an array.`)
-  }
-
-  if (!Array.isArray(componentConfig.attributes_display_rules)) {
-    throw new Error(`[ manbun ] ERROR: ${componentConfig.componentName}.json attributes_display_rules value must be an array.`)
-  }
-}
-
-const getSourceCSS = (configuration) => {
-  const cssFileExists = fs.existsSync(configuration.inputFilePathCSS)
+const getSourceCSS = (taskData) => {
+  const cssFileExists = fs.existsSync(taskData.inputFilePathCSS)
 
   return cssFileExists
-    ? cleanCSS(fs.readFileSync(configuration.inputFilePathCSS, 'utf8'))
+    ? cleanCSS(fs.readFileSync(taskData.inputFilePathCSS, 'utf8'))
     : ''
 }
 
-const getScriptHTML = (configuration) => {
-  const { componentName } = configuration
+export const createHTML = (taskData) => {
+  const { configFile } = taskData
 
-  return `
-    const {${componentName}} = require('${componentName}/${componentName}');
-    exports.component = ComponentUI.createReactComponent(${componentName});
-  `
-}
-
-export const createHTML = (configuration) => {
-  const componentConfig = require(configuration.configFilePath)
-  validateConfig(componentConfig)
-
-  const type = COMPONENT_TYPE_MAP[componentConfig.type]
-  const definitionString = stringifyJSON(getDefinition(componentConfig))
-  const attributesString = stringifyJSON(componentConfig.attributes || [])
-  const attributesLayoutString = stringifyJSON(componentConfig.attributes_layout || [])
-  const attributesDisplayString = stringifyJSON(componentConfig.attributes_display_rules || [])
-  const cssString = getSourceCSS(configuration)
-  const scriptString = getScriptHTML(configuration)
+  const type = COMPONENT_TYPE_MAP[configFile.type]
+  const definitionString = stringifyJSON(getDefinition(configFile))
+  const attributesString = stringifyJSON(configFile.attributes || [])
+  const attributesLayoutString = stringifyJSON(configFile.attributes_layout || [])
+  const attributesDisplayString = stringifyJSON(configFile.attributes_display_rules || [])
+  const cssString = getSourceCSS(taskData)
+  const scriptString = prepareScriptForHTML(taskData)
 
   const html = cleanHTML(`
     <!DOCTYPE ${type}>
@@ -90,5 +48,5 @@ export const createHTML = (configuration) => {
     <script>\n${scriptString}\n</script>
   `)
 
-  fs.writeFileSync(configuration.outputFilePathHTML, html, 'utf8')
+  fs.writeFileSync(taskData.outputFilePathHTML, html, 'utf8')
 }

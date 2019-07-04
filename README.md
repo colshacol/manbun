@@ -1,7 +1,17 @@
 # manbun
 
+manbun is a CLI tool that helps with developing React components in Dreamtsoft bundles.
+
 `npm i -D manbun`
 `yarn add -D manbun`
+
+```
+/components
+/source
+  /components
+    /VideoPlayer
+
+```
 
 ## babel
 

@@ -2,7 +2,7 @@ import shell from 'shelljs'
 import path from 'path'
 
 import { cwdResolve } from '../utilities'
-import { SOURCE_COMPONENTS_PATH, CWD } from '../consts'
+import { SOURCE_COMPONENTS_PATH, CWD, HTML_SCRIPT_CONTENT, SERVER_FILE_CONTENT } from '../consts'
 
 type ConfigurationType = {
   [property: string]: string
@@ -23,18 +23,26 @@ export const getSourcePaths = (): string[] => {
 
 export const createConfiguration = (relativeSourcePath: string): ConfigurationType => {
   const substringStartIndex = relativeSourcePath.lastIndexOf('/') + 1
-  const componentName = relativeSourcePath.substr(substringStartIndex)
+  const dsComponentName = relativeSourcePath.substr(substringStartIndex)
   const sourcePath = cwdResolve(relativeSourcePath)
 
+  const configFilePath = `${sourcePath}/_config.json`
+  const configFile = require(configFilePath)
+  const { componentName } = configFile
+  validateConfig(configFile)
+
   const inputFilePathJS = `${sourcePath}/${componentName}.js`
-  const configFilePath = `${sourcePath}/${componentName}.json`
   const inputFilePathCSS = `${sourcePath}/${componentName}.css`
 
-  const outputDirectoryPath = cwdResolve(`./components/${componentName}`)
-  const outputFilePathJS = `${outputDirectoryPath}/${componentName}.js`
-  const outputFilePathHTML = `${outputDirectoryPath}/${componentName}.html`
+  const outputDirectoryPath = cwdResolve(`./components/${dsComponentName}`)
+  const outputFilePathJS = `${outputDirectoryPath}/content/modules/${componentName}.js`
+  const outputFilePathHTML = `${outputDirectoryPath}/${componentName}Client.html`
+  const outputFilePathServer = `${outputDirectoryPath}/${componentName}Server.js`
+
+
 
   return {
+    configFile,
     sourcePath,
     componentName,
     sourcePath,
@@ -43,7 +51,54 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
     configFilePath,
     outputDirectoryPath,
     outputFilePathJS,
-    outputFilePathHTML
+    outputFilePathHTML,
+    outputFilePathServer
   }
 }
 
+const injectComponentName = (target, configuration) => {
+  return target.replace(/(\$\$COMPONENT_NAME)/g, configuration.componentName)
+}
+
+export const prepareServerScript = (configuration) => {
+  return injectComponentName(SERVER_FILE_CONTENT, configuration)
+}
+
+export const prepareScriptForHTML = (configuration) => {
+  return injectComponentName(HTML_SCRIPT_CONTENT, configuration)
+}
+
+
+const validateConfig = (configFile) => {
+  if (!configFile.type) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json type property is required.`)
+  }
+
+  if (!configFile.id) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json id property is required.`)
+  }
+
+  if (!configFile.label) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json label property is required.`)
+  }
+
+  if (!configFile.className) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json className property is required.`)
+  }
+
+  if (!configFile.renderable) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json renderable property is required.`)
+  }
+
+  if (configFile.attributes && !Array.isArray(configFile.attributes)) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json attributes value must be an array.`)
+  }
+
+  if (configFile.attributes && !Array.isArray(configFile.attributes_layout)) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json type attributes_layout value must be an array.`)
+  }
+
+  if (configFile.attributes && !Array.isArray(configFile.attributes_display_rules)) {
+    throw new Error(`[ manbun ] ERROR: ${configFile.componentName}.json attributes_display_rules value must be an array.`)
+  }
+}
