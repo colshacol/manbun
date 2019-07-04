@@ -6,17 +6,17 @@ import image from 'rollup-plugin-image'
 
 import { NAMED_EXPORTS } from '../consts'
 
-export const plugins = [
+export const plugins = (browser = true) => ([
   image(),
   fileSize(),
   babel(),
 
   resolve({
     preferBuiltins: true,
-    browser: true,
+    browser,
   }),
 
   commonjs({
     namedExports: NAMED_EXPORTS
   }),
-]
+])

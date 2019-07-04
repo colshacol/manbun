@@ -2,10 +2,24 @@ import 'regenerator-runtime/runtime'
 import { rollup } from 'rollup'
 
 import { createHTML } from './createHTML'
-import { createServer } from './createServer'
+// import { createServer } from './createServer'
 import { getSourcePaths, createConfiguration } from './utilities'
 import { plugins } from './plugins'
 import { EXTERNALS } from '../consts'
+
+const createServer = async (configuration) => {
+  const bundle = await rollup({
+    input: configuration.inputFilePathServer,
+    external: EXTERNALS,
+    plugins: plugins(false)
+  })
+
+  await bundle.write({
+    sourcemap: true,
+    file: configuration.outputFilePathServer,
+    format: 'cjs'
+  })
+}
 
 const buildFromSourcePath = async (sourcePath) => {
   try {
@@ -14,7 +28,7 @@ const buildFromSourcePath = async (sourcePath) => {
     const bundle = await rollup({
       input: configuration.inputFilePathJS,
       external: EXTERNALS,
-      plugins
+      plugins: plugins()
     })
 
     await bundle.write({

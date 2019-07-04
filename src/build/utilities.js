@@ -32,6 +32,7 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
 
   const inputFilePathJS = `${sourcePath}/${componentName}.js`
   const inputFilePathCSS = `${sourcePath}/${componentName}.css`
+  const inputFilePathServer = `${sourcePath}/server/index.js`
 
   const outputDirectoryPath = cwdResolve(`./components/${dsComponentName}`)
   const outputFilePathJS = `${outputDirectoryPath}/content/modules/${componentName}.js`
@@ -39,8 +40,8 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
   const outputFilePathServer = `${outputDirectoryPath}/${componentName}Server.js`
 
 
-
   return {
+    inputFilePathServer,
     dsComponentName,
     configFile,
     sourcePath,
