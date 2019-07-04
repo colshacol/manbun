@@ -1,6 +1,6 @@
 {
   "name": "manbun",
-  "version": "0.0.25",
+  "version": "0.0.27",
   "main": "./bin/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "babel-plugin-jsx-control-statements": "^4.0.0",
     "cssbeautify": "^0.3.1",
     "meow": "^5.0.0",
+    "prettier": "^1.18.2",
     "pretty": "^2.0.0",
     "rollup": "^1.16.3",
     "rollup-plugin-babel": "^4.3.3",
