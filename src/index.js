@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+import 'regenerator-runtime/runtime'
 import meow from 'meow'
 
 import { setup } from './setup'

@@ -11,8 +11,8 @@ const validateConfigFileExists = (configFilePath) => {
   invariant(exists, `${configFilePath} is required but does not exist.`)
 }
 
-export const getConfigFile = (dsComponentName) => {
-  const relativePath = `source/components/${dsComponentName}/_config.json`
+export const getConfigFile = (componentName) => {
+  const relativePath = `source/components/${componentName}/_config.json`
   const configFilePath = cwdResolve(relativePath)
 
   validateConfigFileExists(configFilePath)

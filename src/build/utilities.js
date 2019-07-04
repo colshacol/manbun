@@ -1,5 +1,6 @@
 import shell from 'shelljs'
 import path from 'path'
+import changeCase from 'change-case'
 
 import { cwdResolve } from '../utilities/general'
 import { getConfigFile } from '../utilities/configFile'
@@ -9,14 +10,6 @@ type ConfigurationType = {
   [property: string]: string
 }
 
-export const copyHTMLFile = (configuration: ConfigurationType): void => {
-  shell.cp(
-    '-u',
-    configuration.inputFilePathHTML,
-    configuration.outputFilePathHTML
-  )
-}
-
 export const getSourcePaths = (): string[] => {
   const dirs = shell.ls('-d', `${SOURCE_COMPONENTS_PATH}/*`);
   return Array.from(dirs)
@@ -24,21 +17,20 @@ export const getSourcePaths = (): string[] => {
 
 export const createConfiguration = (relativeSourcePath: string): ConfigurationType => {
   const substringStartIndex = relativeSourcePath.lastIndexOf('/') + 1
-  const dsComponentName = relativeSourcePath.substr(substringStartIndex)
+  const componentName = relativeSourcePath.substr(substringStartIndex)
+  const dsComponentName = changeCase.snake(componentName)
   const sourcePath = cwdResolve(relativeSourcePath)
 
-  const configFile = getConfigFile(dsComponentName)
-  const { componentName } = configFile
+  const configFile = getConfigFile(componentName)
 
   const inputFilePathJS = `${sourcePath}/${componentName}.js`
   const inputFilePathCSS = `${sourcePath}/${componentName}.css`
   const inputFilePathServer = `${sourcePath}/server/index.js`
 
   const outputDirectoryPath = cwdResolve(`./components/${dsComponentName}`)
-  const outputFilePathJS = `${outputDirectoryPath}/content/modules/${componentName}.js`
+  const outputFilePathJS = `${outputDirectoryPath}/content/modules/${componentName}.es6.js`
   const outputFilePathHTML = `${outputDirectoryPath}/${componentName}Client.html`
   const outputFilePathServer = `${outputDirectoryPath}/${componentName}Server.js`
-
 
   return {
     inputFilePathServer,
@@ -68,7 +60,6 @@ export const prepareServerScript = (configuration) => {
 export const prepareScriptForHTML = (configuration) => {
   return injectComponentName(HTML_SCRIPT_CONTENT, configuration)
 }
-
 
 const validateConfig = (configFile) => {
   if (!configFile.type) {

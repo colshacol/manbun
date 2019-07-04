@@ -1,5 +1,5 @@
 import fs from 'fs'
-import cleanCSS from 'cssbeautify'
+import prettier from 'prettier'
 
 import { stringifyJSON } from '../utilities/general'
 import { prepareScriptForHTML } from './utilities'
@@ -23,7 +23,7 @@ const getSourceCSS = (taskData) => {
   const cssFileExists = fs.existsSync(taskData.inputFilePathCSS)
 
   return cssFileExists
-    ? cleanCSS(fs.readFileSync(taskData.inputFilePathCSS, 'utf8'))
+    ? prettier.format(fs.readFileSync(taskData.inputFilePathCSS, 'utf8'), { parser: 'css' })
     : ''
 }
 
@@ -38,9 +38,7 @@ export const createHTML = (taskData) => {
   const cssString = getSourceCSS(taskData)
   const scriptString = prepareScriptForHTML(taskData)
 
-
-
-  const html = cleanHTML(`
+  const html = prettier.format(`
     <!DOCTYPE ${type}>
     <definition>\n${definitionString}\n</definition>
     ${attributesString.trim().length > 10 ? `<attributes>\n${attributesString}\n</attributes>` : ''}
@@ -48,7 +46,7 @@ export const createHTML = (taskData) => {
     ${attributesDisplayString.trim().length > 10 ? `<attributes_display_rules>\n${attributesString}\n</attributes_display_rules>` : ''}
     <style>\n${cssString}\n</style>
     <script>\n${scriptString}\n</script>
-  `)
+  `, { parser: 'html' })
 
   fs.writeFileSync(taskData.outputFilePathHTML, html, 'utf8')
 }

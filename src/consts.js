@@ -7,6 +7,10 @@ export const EXTERNALS = ['react', 'react-dom', 'ds.base']
 export const SOURCE_COMPONENTS_PATH = path.resolve(CWD, 'source/components')
 
 export const NAMED_EXPORTS = {
+  'ds.base/PageComponent': [
+    'default',
+  ],
+
   react: [
     'Component',
     'PureComponent',
