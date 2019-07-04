@@ -42,6 +42,7 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
 
 
   return {
+    dsComponentName,
     configFile,
     sourcePath,
     componentName,
@@ -57,7 +58,8 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
 }
 
 const injectComponentName = (target, configuration) => {
-  return target.replace(/(\$\$COMPONENT_NAME)/g, configuration.componentName)
+  const a = target.replace(/(\$\$COMPONENT_NAME)/g, configuration.componentName)
+  return a.replace(/(\$\$DS_COMPONENT_NAME)/g, configuration.dsComponentName)
 }
 
 export const prepareServerScript = (configuration) => {

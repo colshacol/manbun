@@ -50,7 +50,7 @@ export const SERVER_FILE_CONTENT = prettier.format(`
 export const HTML_SCRIPT_CONTENT = prettier.format(`
   var React = require('react');
   var ReactDOM = require('react-dom');
-  var Component = require('$$COMPONENT_NAME/$$COMPONENT_NAME');
+  var Component = require('$$DS_COMPONENT_NAME/$$COMPONENT_NAME');
 
   exports.component = ComponentUI.create({
   onLoad: function(data) {
