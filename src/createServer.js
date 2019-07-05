@@ -1,6 +1,6 @@
 const PageComponent = require('ds.base/PageComponent')
 
-import invariant from 'manbun/invariant'
+import { invariant } from 'manbun/invariant'
 
 const verifyIndexRoute = (serverName, routes) => {
   const hasIndexRoute = routes.some(([routePath]) => {
