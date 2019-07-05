@@ -10,10 +10,13 @@
   "files": [
     "bin",
     "babel.config.js",
-    "prettier.config.js"
+    "prettier.config.js",
+    "mapPropsFromDS.js",
+    "createServer.js",
+    "getBucket.js"
   ],
   "scripts": {
-    "build": "node build",
+    "scripts": "node scripts",
     "exec-setup": "babel-node ./src setup --dev",
     "exec-build": "babel-node src build",
     "exec-help": "babel-node ./src --help",
