@@ -32,7 +32,9 @@ Inside of your component's source directory, there are only four requirements in
 
 **[WIP]**
 
-## babel
+## Provided Configurations
+
+### babel
 
 You can and should extend the provided `manbun` Babel configuration inside of your `package.json`.
 
@@ -53,4 +55,14 @@ If you want, you can also use the provided `manbun` prettier configuration by ad
 {
   "prettier": "manbun/prettier.config"
 }
+```
+
+## Development Instructions
+
+```sh
+yarn scripts build
+```
+
+```sh
+yarn publish
 ```

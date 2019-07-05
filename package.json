@@ -1,6 +1,6 @@
 {
   "name": "manbun",
-  "version": "0.0.47",
+  "version": "0.1.0",
   "main": "./bin/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "exec-setup": "babel-node ./src setup --dev",
     "exec-build": "babel-node src build",
     "exec-help": "babel-node ./src --help",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn scripts build"
   },
   "devDependencies": {},
   "dependencies": {
