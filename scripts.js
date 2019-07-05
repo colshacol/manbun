@@ -23,7 +23,7 @@ if (command === 'build') {
 }
 
 if (command === "publish") {
-  const commitMessage = process.arvg[3]
+  const commitMessage = process.argv[3]
 
   execute('git add .')
   execute(`git commit -m ${commitMessage}`)

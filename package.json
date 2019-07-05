@@ -1,6 +1,6 @@
 {
   "name": "manbun",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./bin/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
@@ -13,7 +13,8 @@
     "prettier.config.js",
     "mapPropsFromDS.js",
     "createServer.js",
-    "getBucket.js"
+    "getBucket.js",
+    "invariant.js"
   ],
   "scripts": {
     "scripts": "node scripts",
