@@ -3,7 +3,7 @@ import prettier from 'prettier'
 
 export const CWD = process.cwd()
 export const PKG = require(`${CWD}/package.json`)
-export const EXTERNALS = ['react', 'react-dom', 'ds.base']
+export const EXTERNALS = ['react', 'react-dom', 'ds.base', 'core']
 export const SOURCE_COMPONENTS_PATH = path.resolve(CWD, 'source/components')
 
 export const NAMED_EXPORTS = {
