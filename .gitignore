@@ -16,7 +16,7 @@ yarn.lock
 # development/dependency directories
 node_modules
 .cache
-/components
-/source
+components
+source
 
 /colton-test-bundle

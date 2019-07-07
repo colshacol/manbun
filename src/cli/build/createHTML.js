@@ -1,49 +1,50 @@
 import fs from 'fs'
 import prettier from 'prettier'
 
-import { stringifyJSON } from '../utilities/general'
+import { stringify } from '../../utilities/general'
 import { prepareScriptForHTML } from './utilities'
-import { COMPONENT_TYPE_MAP } from '../consts'
+import { COMPONENT_TYPE_MAP } from '../../consts'
 
-const getDefinition = (componentConfig) => {
+const getDefinition = (configFile) => {
+  const isRenderable = ['component', 'page'].includes(configFile.type)
+
   return {
-    id: componentConfig.id,
-    label: componentConfig.label,
-    className: componentConfig.className,
-    renderable: componentConfig.renderable,
-    dependencies: componentConfig.dependencies
+    id: configFile.id,
+    label: configFile.label,
+    className: configFile.serverName,
+    renderable: isRenderable,
+    dependencies: configFile.dependencies
   }
-}
-
-const cleanHTML = (html) => {
-  return html.replace(/ *</g, '<')
 }
 
 const getSourceCSS = (taskData) => {
   const cssFileExists = fs.existsSync(taskData.inputFilePathCSS)
 
-  return cssFileExists
-    ? prettier.format(fs.readFileSync(taskData.inputFilePathCSS, 'utf8'), { parser: 'css' })
+  const cssContent = cssFileExists
+    ? fs.readFileSync(taskData.inputFilePathCSS, 'utf8')
     : ''
+
+  return prettier.format(cssContent, { parser: 'css' })
 }
 
 export const createHTML = (taskData) => {
   const { configFile } = taskData
-
   const type = COMPONENT_TYPE_MAP[configFile.type]
-  const definitionString = stringifyJSON(getDefinition(configFile))
-  const attributesString = stringifyJSON(configFile.attributes || [])
-  const attributesLayoutString = stringifyJSON(configFile.attributes_layout || [])
-  const attributesDisplayString = stringifyJSON(configFile.attributes_display_rules || [])
+
+  const definitionString = stringify(getDefinition(configFile))
+  const attributesString = stringify(configFile.attributes || '')
+  const attributesLayoutString = stringify(configFile.attributes_layout || '')
+  const attributesDisplayString = stringify(configFile.attributes_display_rules || '')
+
   const cssString = getSourceCSS(taskData)
   const scriptString = prepareScriptForHTML(taskData)
 
   const html = prettier.format(`
     <!DOCTYPE ${type}>
     <definition>\n${definitionString}\n</definition>
-    ${attributesString.trim().length > 10 ? `<attributes>\n${attributesString}\n</attributes>` : ''}
-    ${attributesLayoutString.trim().length > 10 ? `<attributes_layout>\n${attributesLayoutString}\n</attributes_layout>` : ''}
-    ${attributesDisplayString.trim().length > 10 ? `<attributes_display_rules>\n${attributesString}\n</attributes_display_rules>` : ''}
+    ${attributesString ? `<attributes>\n${attributesString}\n</attributes>` : ''}
+    ${attributesLayoutString ? `<attributes_layout>\n${attributesLayoutString}\n</attributes_layout>` : ''}
+    ${attributesDisplayString ? `<attributes_display_rules>\n${attributesString}\n</attributes_display_rules>` : ''}
     <style>\n${cssString}\n</style>
     <script>\n${scriptString}\n</script>
   `, { parser: 'html' })

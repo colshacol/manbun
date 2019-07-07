@@ -32,6 +32,7 @@ export const PATHS_TO_VALIDATE = [
 
 export const COMPONENT_TYPE_MAP = {
   page: 'f8component',
+  component: 'f8component',
   widget: 'f8widget',
   action: 'f8action',
   security: 'f8security'
