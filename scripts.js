@@ -9,11 +9,13 @@ const pathExists = (relativePath) => {
 const removeDirectory = (relativePath) => {
   const exists = pathExists(relativePath)
   exists && shell.rm('-rf', relativePath)
+  exists && console.log(`[ manbun ] removed ${relativePath}`)
 }
 
 const createDirectory = (relativePath) => {
-  const alreadyExists = pathExists(relativePath)
-  !alreadyExists && shell.mkdir(relativePath)
+  const exists = pathExists(relativePath)
+  !exists && shell.mkdir(relativePath)
+  !exists && console.log(`[ manbun ] created ${relativePath}`)
 }
 
 const copyFile = (filePath, destinationPath) => {
