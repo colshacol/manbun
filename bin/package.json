@@ -1,6 +1,6 @@
 {
   "name": "manbun",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "main": "./cli/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
@@ -11,6 +11,7 @@
     "./"
   ],
   "scripts": {
+    "pub": "yarn scripts build && cd bin && yarn publish && cd ../",
     "scripts": "node scripts",
     "exec-setup": "babel-node ./src setup --dev",
     "exec-build": "babel-node src build",
@@ -42,6 +43,8 @@
     "kind-of": "^6.0.2",
     "latest-version": "^5.1.0",
     "meow": "^5.0.0",
+    "postcss": "^7.0.17",
+    "postcss-cssnext": "^3.1.0",
     "prettier": "^1.18.2",
     "pretty": "^2.0.0",
     "regenerator-runtime": "^0.13.2",
@@ -51,6 +54,7 @@
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-image": "^1.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
     "scope.macro": "^1.0.0",
     "shelljs": "^0.8.3",
     "warning": "^4.0.3"
