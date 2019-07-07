@@ -1,9 +1,9 @@
 import fs from 'fs'
 import prettier from 'prettier'
 
-import { stringify } from '../../utilities/general'
+import { stringify } from '../utilities/general'
 import { prepareScriptForHTML } from './utilities'
-import { COMPONENT_TYPE_MAP } from '../../consts'
+import { COMPONENT_TYPE_MAP } from '../consts'
 
 const getDefinition = (configFile) => {
   const isRenderable = ['component', 'page'].includes(configFile.type)
