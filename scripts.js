@@ -2,8 +2,17 @@ const shell = require('shelljs')
 
 const command = process.argv[2]
 
+const pathExists = (relativePath) => {
+  return shell.test('-e', relativePath)
+}
+
+const removeDirectory = (relativePath) => {
+  const exists = pathExists(relativePath)
+  exists && shell.rm('-rf', relativePath)
+}
+
 const createDirectory = (relativePath) => {
-  const alreadyExists = shell.test('-e', relativePath)
+  const alreadyExists = pathExists(relativePath)
   !alreadyExists && shell.mkdir(relativePath)
 }
 
@@ -16,18 +25,22 @@ const execute = (command) => {
 }
 
 if (command === 'build') {
+  removeDirectory('./bin')
   createDirectory('./bin')
+  copyFile('./README.md', './bin')
+  copyFile('./package.json', './bin')
   copyFile('./babel.config.js', './bin');
   copyFile('./prettier.config.js', './bin');
   execute('./node_modules/.bin/babel src --out-dir bin')
 }
 
-if (command === "publish") {
+if (command === "push") {
   const commitMessage = process.argv[3]
 
+  console.log(commitMessage)
+
   execute('git add .')
-  execute(`git commit -m ${commitMessage}`)
-  execute('yarn publish')
+  execute(`git commit -m "${commitMessage}"`)
   execute('git push')
 }
 

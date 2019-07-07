@@ -1,27 +1,22 @@
 {
   "name": "manbun",
   "version": "0.1.5",
-  "main": "./bin/index.js",
+  "main": "./cli/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
   "bin": {
-    "manbun": "./bin/index.js"
+    "manbun": "./cli/index.js"
   },
   "files": [
-    "bin",
-    "babel.config.js",
-    "prettier.config.js",
-    "bin/mapPropsFromDS.js",
-    "bin/createServer.js",
-    "bin/getBucket.js",
-    "bin/invariant.js"
+    "./"
   ],
   "scripts": {
     "scripts": "node scripts",
     "exec-setup": "babel-node ./src setup --dev",
     "exec-build": "babel-node src build",
     "exec-help": "babel-node ./src --help",
-    "prepublishOnly": "yarn scripts build"
+    "prepublishOnly": "yarn scripts build",
+    "test": "jest"
   },
   "devDependencies": {},
   "dependencies": {
@@ -38,10 +33,14 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.5",
     "babel-plugin-jsx-control-statements": "^4.0.0",
+    "babel-plugin-macros": "^2.6.1",
     "babel-plugin-transform-dev-warning": "^0.1.1",
     "change-case": "^3.1.0",
     "cssbeautify": "^0.3.1",
+    "debug": "^4.1.1",
     "invariant": "^2.2.4",
+    "jest": "^24.8.0",
+    "kind-of": "^6.0.2",
     "meow": "^5.0.0",
     "prettier": "^1.18.2",
     "pretty": "^2.0.0",
@@ -52,6 +51,7 @@
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-image": "^1.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "scope.macro": "^1.0.0",
     "shelljs": "^0.8.3",
     "warning": "^4.0.3"
   },
