@@ -1,4 +1,5 @@
 import path from 'path'
+import kind from 'kind-of'
 
 import { CWD } from '../consts'
 
