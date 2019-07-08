@@ -1,6 +1,6 @@
 {
   "name": "manbun",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "main": "./cli/index.js",
   "author": "Colton Colcleasure <colshacol@gmail.com>",
   "license": "MIT",
