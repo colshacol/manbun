@@ -15,6 +15,10 @@ var _rollupPluginFilesize = _interopRequireDefault(require("rollup-plugin-filesi
 
 var _rollupPluginImage = _interopRequireDefault(require("rollup-plugin-image"));
 
+var _rollupPluginPostcss = _interopRequireDefault(require("rollup-plugin-postcss"));
+
+var _postcssCssnext = _interopRequireDefault(require("postcss-cssnext"));
+
 var _consts = require("../consts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -26,6 +30,8 @@ var plugins = function plugins() {
     browser: browser
   }), (0, _rollupPluginCommonjs["default"])({
     namedExports: _consts.NAMED_EXPORTS
+  }), (0, _rollupPluginPostcss["default"])({
+    plugins: [(0, _postcssCssnext["default"])()]
   })];
 };
 

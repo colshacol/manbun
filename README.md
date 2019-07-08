@@ -1,6 +1,6 @@
 # manbun
 
-`manbun` is a CLI tool that aides in developing components for Dreamtsoft bundles.
+`manbun` is a CLI tool that aides in developing components for DS bundles.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Install with yarn: `yarn add -D manbun`
 
 ## Overview
 
-`manbun` is a tool that makes developing Dreamtsoft bundles _easier_ and less opinionated. It is a transpiler, a bundler, and a provider of cleaner and simpler API wrappers around APIs provided by Dreamtsoft.
+`manbun` is a tool that makes developing DS bundles _easier_ and less opinionated. It is a transpiler, a bundler, and a provider of cleaner and simpler API wrappers around APIs provided by DS.
 
 Given this setup:
 
@@ -26,7 +26,7 @@ A component's source directory can be named whatever you like. You have the free
 
 Inside of your component's source directory, there are only four requirements in order for `manbun` to work properly.
 
-1. You should have a `.dsconfig.json` file. This JSON data is only slightly different than the data you would find in the various configuration elements within a standard Dreamtsoft `Client.html` file. The main differences, other than the filetype, are as follows:
+1. You should have a `.dsconfig.json` file. This JSON data is only slightly different than the data you would find in the various configuration elements within a standard DS `Client.html` file. The main differences, other than the filetype, are as follows:
 
 - Instead of `className`, you will use the sensible and intuitive alternative: `serverName`. The value of `serverName` applies exactly how you would expect it to: It becomes the name of your component's server.
 
