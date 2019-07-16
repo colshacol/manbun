@@ -11,8 +11,10 @@
     "./"
   ],
   "scripts": {
+    "build": "yarn scripts build",
     "pub": "yarn scripts build && cd bin && yarn publish && cd ../",
     "scripts": "node scripts",
+    "lint": "npx healthier",
     "exec-setup": "babel-node ./src setup --dev",
     "exec-build": "babel-node src build",
     "exec-help": "babel-node ./src --help",
@@ -40,6 +42,7 @@
     "change-case": "^3.1.0",
     "cssbeautify": "^0.3.1",
     "debug": "^4.1.1",
+    "healthier": "^2.0.0",
     "invariant": "^2.2.4",
     "jest": "^24.8.0",
     "kind-of": "^6.0.2",

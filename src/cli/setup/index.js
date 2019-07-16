@@ -21,7 +21,7 @@ const createGitKeeps = () => {
 }
 
 export const setup = (context) => {
-  console.log('[ manbun ] SETUP')
+  console.log('[ manbun ] SETUP STARTING')
 
   createDirectories()
   createGitKeeps()

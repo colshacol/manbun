@@ -11,7 +11,7 @@ yarn.lock
 /dist
 /lib
 /build
-/bin/*.js
+bin/*.js
 
 
 # development/dependency directories

@@ -1,5 +1,4 @@
 import fs from 'fs'
-import invariant from 'invariant'
 import warning from 'warning'
 
 import { pathsExist, readFile } from './filesystem';
@@ -8,7 +7,7 @@ import { CWD } from '../consts'
 
 const validateConfigFileExists = (configFilePath) => {
   const exists = pathsExist([configFilePath])
-  invariant(exists, `${configFilePath} is required but does not exist.`)
+  if (!exists) throw Error(`${configFilePath} is required but does not exist.`)
 }
 
 export const getConfigFile = (componentName) => {

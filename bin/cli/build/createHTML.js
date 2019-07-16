@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _general = require("../utilities/general");
 var _utilities = require("./utilities");
 
 var _consts = require("../consts");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var getDefinition = function getDefinition(configFile) {
   var isRenderable = ['component', 'page'].includes(configFile.type);

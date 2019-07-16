@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 require("regenerator-runtime/runtime");
 
 var _meow = _interopRequireDefault(require("meow"));
@@ -10,8 +12,6 @@ var _setup = require("./setup");
 var _build = require("./build");
 
 var _consts = require("./consts");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var CLI_CONFIGURATION = {
   flags: {

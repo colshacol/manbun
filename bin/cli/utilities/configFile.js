@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ var _filesystem = require("./filesystem");
 var _general = require("./general");
 
 var _consts = require("../consts");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var validateConfigFileExists = function validateConfigFileExists(configFilePath) {
   var exists = (0, _filesystem.pathsExist)([configFilePath]);

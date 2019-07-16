@@ -11,6 +11,8 @@ export const NAMED_EXPORTS = {
     'default',
   ],
 
+  'react-is': ["ForwardRef", "isFragment", "isPortal", "isStrictMode", "isElement", "isValidElementType", "isConcurrentMode", "typeOf", "isContextProvider", "isContextConsumer"],
+
   react: [
     'Component',
     'PureComponent',
@@ -21,6 +23,74 @@ export const NAMED_EXPORTS = {
     'useMemo',
     'createRef',
     'useEffect'
+  ],
+
+  "source/components/POSClover/components/index.js": [
+    'Alert',
+    'Badge',
+    'Box',
+    "Button",
+    "Checkbox",
+    "ContentSwitcher",
+    "FileTree",
+    "Heading",
+    "Icon",
+    "Image",
+    "Input",
+    "Label",
+    "Link",
+    "List",
+    "Menu",
+    "Modal",
+    "Pane",
+    "Pill",
+    "PopOver",
+    "Radio",
+    "Select",
+    "ShadowRoot",
+    "Spacer",
+    "Spinner",
+    "Style",
+    "Switch",
+    "Table",
+    "Text",
+    "TextArea",
+    "Toast",
+    "Video"
+  ],
+
+  "ensemble": [
+    'Alert',
+    'Badge',
+    'Box',
+    "Button",
+    "Checkbox",
+    "ContentSwitch",
+    "FileTree",
+    "Heading",
+    "Icon",
+    "Image",
+    "Input",
+    "Label",
+    "Link",
+    "List",
+    "Menu",
+    "Modal",
+    "Pane",
+    "Pill",
+    "PopOver",
+    "Radio",
+    "Select",
+    "ShadowRoot",
+    "Spacer",
+    "Spinner",
+    "Style",
+    "Switch",
+    "Table",
+    "Text",
+    "TextArea",
+    "Toast",
+    "Video"
   ]
 }
 
@@ -53,6 +123,6 @@ export const SERVER_FILE_CONTENT = prettier.format(`
 `, { parser: 'babel' })
 
 export const HTML_SCRIPT_CONTENT = prettier.format(`
-  var Component = require('$$DS_COMPONENT_NAME/$$COMPONENT_NAME');
-  exports.component = ComponentUI.createReactComponent(Component);
+  var { $$COMPONENT_NAME } = require('$$DS_COMPONENT_NAME/$$COMPONENT_NAME');
+  exports.component = ComponentUI.createReactComponent($$COMPONENT_NAME );
 `, { parser: 'babel' })

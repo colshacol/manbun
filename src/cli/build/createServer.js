@@ -12,7 +12,7 @@ export const createServer = async (configuration) => {
   })
 
   await bundle.write({
-    sourcemap: false,
+    sourcemap: true,
     file: configuration.outputFilePathServer,
     format: 'cjs'
   })

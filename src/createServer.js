@@ -1,13 +1,11 @@
 const PageComponent = require('ds.base/PageComponent')
 
-import { invariant } from 'manbun/invariant'
-
 const verifyIndexRoute = (serverName, routes) => {
   const hasIndexRoute = routes.some(([routePath]) => {
     return routePath === '/'
   })
 
-  invariant(hasIndexRoute, `${serverName}.routes has no "/" route.`)
+  if (!hasIndexRoute) throw Error(`${serverName}.routes has no "/" route.`)
 }
 
 const boundHandler = (routeHandler) => {
@@ -17,7 +15,6 @@ const boundHandler = (routeHandler) => {
 }
 
 const applyRoute = (final, [routePath, routeHandler]) => {
-  console.log('APPLYING ROUTE: ' + routePath)
   final[routePath] = boundHandler(routeHandler)
   return final
 }

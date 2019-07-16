@@ -14,7 +14,7 @@ const bundleComponent = async (configuration) => {
   })
 
   await bundle.write({
-    sourcemap: false,
+    sourcemap: true,
     file: configuration.outputFilePathJS,
     format: 'cjs'
   })

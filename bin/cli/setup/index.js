@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -8,8 +10,6 @@ exports.setup = void 0;
 var _shelljs = _interopRequireDefault(require("shelljs"));
 
 var _utilities = require("./utilities");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var createDirectories = function createDirectories() {
   (0, _utilities.createDirectory)('./components');
@@ -30,7 +30,7 @@ var createGitKeeps = function createGitKeeps() {
 };
 
 var setup = function setup(context) {
-  console.log('[ manbun ] SETUP');
+  console.log('[ manbun ] SETUP STARTING');
   createDirectories();
   createGitKeeps();
   (0, _utilities.createReadme)();

@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -21,11 +23,11 @@ var _postcssCssnext = _interopRequireDefault(require("postcss-cssnext"));
 
 var _consts = require("../consts");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 var plugins = function plugins() {
   var browser = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-  return [(0, _rollupPluginImage["default"])(), (0, _rollupPluginFilesize["default"])(), (0, _rollupPluginBabel["default"])(), (0, _rollupPluginNodeResolve["default"])({
+  return [(0, _rollupPluginImage["default"])(), (0, _rollupPluginFilesize["default"])(), (0, _rollupPluginBabel["default"])({
+    runtimeHelpers: true
+  }), (0, _rollupPluginNodeResolve["default"])({
     preferBuiltins: true,
     browser: browser
   }), (0, _rollupPluginCommonjs["default"])({

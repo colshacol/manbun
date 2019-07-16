@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -8,8 +10,6 @@ exports.HTML_SCRIPT_CONTENT = exports.SERVER_FILE_CONTENT = exports.COMPONENT_TY
 var _path = _interopRequireDefault(require("path"));
 
 var _prettier = _interopRequireDefault(require("prettier"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var CWD = process.cwd();
 exports.CWD = CWD;
@@ -25,7 +25,10 @@ var SOURCE_COMPONENTS_PATH = _path["default"].resolve(CWD, 'source/components');
 exports.SOURCE_COMPONENTS_PATH = SOURCE_COMPONENTS_PATH;
 var NAMED_EXPORTS = {
   'ds.base/PageComponent': ['default'],
-  react: ['Component', 'PureComponent', 'createElement', 'default', 'useState', 'useContext', 'useMemo', 'createRef', 'useEffect']
+  'react-is': ["ForwardRef", "isFragment", "isPortal", "isStrictMode", "isElement", "isValidElementType", "isConcurrentMode", "typeOf", "isContextProvider", "isContextConsumer"],
+  react: ['Component', 'PureComponent', 'createElement', 'default', 'useState', 'useContext', 'useMemo', 'createRef', 'useEffect'],
+  "source/components/POSClover/components/index.js": ['Alert', 'Badge', 'Box', "Button", "Checkbox", "ContentSwitcher", "FileTree", "Heading", "Icon", "Image", "Input", "Label", "Link", "List", "Menu", "Modal", "Pane", "Pill", "PopOver", "Radio", "Select", "ShadowRoot", "Spacer", "Spinner", "Style", "Switch", "Table", "Text", "TextArea", "Toast", "Video"],
+  "ensemble": ['Alert', 'Badge', 'Box', "Button", "Checkbox", "ContentSwitch", "FileTree", "Heading", "Icon", "Image", "Input", "Label", "Link", "List", "Menu", "Modal", "Pane", "Pill", "PopOver", "Radio", "Select", "ShadowRoot", "Spacer", "Spinner", "Style", "Switch", "Table", "Text", "TextArea", "Toast", "Video"]
 };
 exports.NAMED_EXPORTS = NAMED_EXPORTS;
 var PATHS_TO_VALIDATE = ['/source/components/$$COMPONENT_NAME/.dsconfig.json', '/source/components/$$COMPONENT_NAME/$$COMPONENT_NAME.js', '/source/components/$$COMPONENT_NAME/$$COMPONENT_NAME.css'];
@@ -45,7 +48,7 @@ var SERVER_FILE_CONTENT = _prettier["default"].format("\n  var PageComponent = r
 
 exports.SERVER_FILE_CONTENT = SERVER_FILE_CONTENT;
 
-var HTML_SCRIPT_CONTENT = _prettier["default"].format("\n  var Component = require('$$DS_COMPONENT_NAME/$$COMPONENT_NAME');\n  exports.component = ComponentUI.createReactComponent(Component);\n", {
+var HTML_SCRIPT_CONTENT = _prettier["default"].format("\n  var { $$COMPONENT_NAME } = require('$$DS_COMPONENT_NAME/$$COMPONENT_NAME');\n  exports.component = ComponentUI.createReactComponent($$COMPONENT_NAME );\n", {
   parser: 'babel'
 });
 

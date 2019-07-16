@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,8 +12,6 @@ var _path = _interopRequireDefault(require("path"));
 var _kindOf = _interopRequireDefault(require("kind-of"));
 
 var _consts = require("../consts");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var cwdResolve = function cwdResolve(relativePath) {
   return _path["default"].resolve(_consts.CWD, relativePath);

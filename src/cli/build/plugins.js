@@ -11,7 +11,7 @@ import { NAMED_EXPORTS } from '../consts'
 export const plugins = (browser = true) => ([
   image(),
   fileSize(),
-  babel(),
+  babel({ runtimeHelpers: true }),
 
   resolve({
     preferBuiltins: true,

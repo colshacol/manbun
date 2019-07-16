@@ -1,9 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.prepareScriptForHTML = exports.prepareServerScript = exports.createConfiguration = exports.getSourcePaths = void 0;
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _shelljs = _interopRequireDefault(require("shelljs"));
 
@@ -16,10 +20,6 @@ var _general = require("../utilities/general");
 var _configFile = require("../utilities/configFile");
 
 var _consts = require("../consts");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getSourcePaths = function getSourcePaths() {
   var dirs = _shelljs["default"].ls('-d', "".concat(_consts.SOURCE_COMPONENTS_PATH, "/*"));
@@ -42,8 +42,10 @@ var createConfiguration = function createConfiguration(relativeSourcePath) {
   var inputFilePathJS = "".concat(sourcePath, "/").concat(componentName, ".js");
   var inputFilePathCSS = "".concat(sourcePath, "/").concat(componentName, ".css");
   var inputFilePathServer = "".concat(sourcePath, "/server/index.js");
-  var outputDirectoryPath = (0, _general.cwdResolve)("./components/".concat(dsComponentName));
-  var outputFilePathJS = "".concat(outputDirectoryPath, "/content/modules/").concat(componentName, ".es6.js");
+  var outputComponentsPath = (0, _general.cwdResolve)('./components');
+  var outputDirectoryPath = "".concat(outputComponentsPath, "/").concat(dsComponentName);
+  var outputModulesPath = "".concat(outputDirectoryPath, "/content/modules");
+  var outputFilePathJS = "".concat(outputModulesPath, "/").concat(componentName, ".js");
   var outputFilePathHTML = "".concat(outputDirectoryPath, "/").concat(componentName, "Client.html");
   var outputFilePathServer = "".concat(outputDirectoryPath, "/").concat(componentName, "Server.js");
   return _ref = {
@@ -52,7 +54,7 @@ var createConfiguration = function createConfiguration(relativeSourcePath) {
     configFile: configFile,
     sourcePath: sourcePath,
     componentName: componentName
-  }, _defineProperty(_ref, "sourcePath", sourcePath), _defineProperty(_ref, "inputFilePathJS", inputFilePathJS), _defineProperty(_ref, "inputFilePathCSS", inputFilePathCSS), _defineProperty(_ref, "outputDirectoryPath", outputDirectoryPath), _defineProperty(_ref, "outputFilePathJS", outputFilePathJS), _defineProperty(_ref, "outputFilePathHTML", outputFilePathHTML), _defineProperty(_ref, "outputFilePathServer", outputFilePathServer), _ref;
+  }, (0, _defineProperty2["default"])(_ref, "sourcePath", sourcePath), (0, _defineProperty2["default"])(_ref, "inputFilePathJS", inputFilePathJS), (0, _defineProperty2["default"])(_ref, "inputFilePathCSS", inputFilePathCSS), (0, _defineProperty2["default"])(_ref, "outputDirectoryPath", outputDirectoryPath), (0, _defineProperty2["default"])(_ref, "outputFilePathJS", outputFilePathJS), (0, _defineProperty2["default"])(_ref, "outputFilePathHTML", outputFilePathHTML), (0, _defineProperty2["default"])(_ref, "outputFilePathServer", outputFilePathServer), _ref;
 };
 
 exports.createConfiguration = createConfiguration;

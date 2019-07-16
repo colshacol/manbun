@@ -27,8 +27,11 @@ export const createConfiguration = (relativeSourcePath: string): ConfigurationTy
   const inputFilePathCSS = `${sourcePath}/${componentName}.css`
   const inputFilePathServer = `${sourcePath}/server/index.js`
 
-  const outputDirectoryPath = cwdResolve(`./components/${dsComponentName}`)
-  const outputFilePathJS = `${outputDirectoryPath}/content/modules/${componentName}.es6.js`
+  const outputComponentsPath = cwdResolve('./components')
+
+  const outputDirectoryPath = `${outputComponentsPath}/${dsComponentName}`
+  const outputModulesPath = `${outputDirectoryPath}/content/modules`
+  const outputFilePathJS = `${outputModulesPath}/${componentName}.js`
   const outputFilePathHTML = `${outputDirectoryPath}/${componentName}Client.html`
   const outputFilePathServer = `${outputDirectoryPath}/${componentName}Server.js`
 
